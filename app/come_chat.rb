@@ -35,7 +35,15 @@ class ComeChat < Sinatra::Base
     title = params['title']
     body = params['body']
     # puts "\e[34m$$$$$\e[0m" * 5
-    Message.create(:title => title, :body => body)
+    if user = session[:user_id]
+      puts "\e[34mMESSAGE FROM A USER\e[0m"
+      puts user.inspect
+      Message.create(:title => title, :body => body, 
+                     :author => current_user.email, :time => Time.new)
+    else
+      Message.create(:title => title, :body => body, 
+                     :author => "Visitor", :time => Time.new)
+    end
     redirect to('/')
   end
 
@@ -48,8 +56,10 @@ class ComeChat < Sinatra::Base
     # puts "\e[34mREADY TO CREATE NEW USER\e[0m"
     # puts "password confirmation = " + params['password_confirmation'].to_s
     @user = User.create(:email => params[:email],
-                :password => params[:password],
-                :password_confirmation => params[:password_confirmation])
+                        :name => params[:name],
+                        :username => params[:username],
+                        :password => params[:password],
+                        :password_confirmation => params[:password_confirmation])
 
     if @user.save
       # puts "\e[34mNEW USER CREATED\e[0m"

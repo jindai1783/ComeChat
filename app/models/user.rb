@@ -5,6 +5,8 @@ class User
 
   property :id, Serial
   property :email, String, :unique => true, :message => "This email is already registered"
+  property :name, String
+  property :username, String, :unique => true, :message => "This username is already registered"
   property :password_digest, Text
 
   attr_reader :password
