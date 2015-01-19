@@ -1,0 +1,14 @@
+<ul>
+  <% @messages.each do |message| %>
+    <li><%= message.title %> - <%= message.body %></li>
+  <% end %>
+</ul>
+
+<div id="new-message">
+  <form action="/messages" method="post">
+    Title: <input type="text" name="title">
+    Body: <input type="text" name="body">
+    User: <input type="text" name="user">
+    <input type="submit" value="Send message">
+  </form>
+</div>
