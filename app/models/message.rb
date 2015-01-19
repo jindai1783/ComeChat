@@ -5,6 +5,6 @@ class Message
   property :id,     Serial
   property :title,  String
   property :body,   String
-  property :user,   String
+  has 1, :user, :through => Resource
 
 end
