@@ -1,8 +1,6 @@
-<ul>
-  <% @messages.each do |message| %>
-    <li><%= message.title %> - <%= message.body %></li>
-  <% end %>
-</ul>
+<% if current_user %>
+  Welcome, <%= current_user.email %>
+<% end %>
 
 <div id="new-message">
   <form action="/messages" method="post">
@@ -11,3 +9,9 @@
     <input type="submit" value="Send message">
   </form>
 </div>
+
+<ul>
+  <% @messages.each do |message| %>
+    <li><%= message.title %> - <%= message.body %></li>
+  <% end %>
+</ul>
