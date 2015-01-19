@@ -1,12 +1,11 @@
 require 'sinatra/base'
 require 'data_mapper'
 
+require './app/models/message'
+
 env = ENV['RACK_ENV'] || 'development'
 
 DataMapper.setup(:default, "postgres://localhost/come_chat_#{env}")
-
-require './app/models/user'
-require './app/models/message'
 
 DataMapper.finalize
 
@@ -21,8 +20,8 @@ class ComeChat < Sinatra::Base
   post '/messages' do
     title = params['title']
     body = params['body']
-    User.first_or_create(:name => params['user'])
-    Message.create(:title => title, :body => body, :user => user)
+    puts "\e[34m$$$$$\e[0m" * 5
+    Message.create(:title => title, :body => body)
     redirect to('/')
   end
 

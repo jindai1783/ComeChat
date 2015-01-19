@@ -3,10 +3,8 @@ require 'spec_helper'
 feature "Users browses the list of messages" do 
 
   before(:each) {
-    User.create(:name => "Pot")
     Message.create(:title => "Test",
-                   :body => "This is a test",
-                   :user => "Pot")
+                   :body => "This is a test")
   }
 
   scenario "when opening the home page" do 
