@@ -39,9 +39,13 @@ class ComeChat < Sinatra::Base
   end
 
   post '/users' do
-    puts "\e[34m~~~~~\e[0m" * 5
+    puts "\e[34mREADY TO CREATE NEW USER\e[0m"
+    puts "password confirmation = " + params['password_confirmation'].to_s
     user = User.create(:email => params[:email],
-                :password => params[:password])
+                :password => params[:password],
+                :password_confirmation => params[:password_confirmation])
+    puts "\e[34mNEW USER CREATED\e[0m"
+    puts user.inspect
     session[:user_id] = user.id
     redirect to('/')
   end
