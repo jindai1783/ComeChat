@@ -7,6 +7,8 @@ require './app/models/user'
 
 require './app/helpers/application'
 
+require './app/models/message'
+
 env = ENV['RACK_ENV'] || 'development'
 
 DataMapper.setup(:default, "postgres://localhost/come_chat_#{env}")
