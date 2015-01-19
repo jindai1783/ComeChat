@@ -4,6 +4,6 @@ class Message
 
   property :id,     Serial
   property :title,  String
-  property :body,   String
+  property :body,   Text
 
 end
