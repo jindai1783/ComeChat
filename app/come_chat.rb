@@ -53,8 +53,6 @@ class ComeChat < Sinatra::Base
   end
 
   post '/users' do
-    # puts "\e[34mREADY TO CREATE NEW USER\e[0m"
-    # puts "password confirmation = " + params['password_confirmation'].to_s
     @user = User.create(:email => params[:email],
                         :name => params[:name],
                         :username => params[:username],
@@ -62,15 +60,10 @@ class ComeChat < Sinatra::Base
                         :password_confirmation => params[:password_confirmation])
 
     if @user.save
-      # puts "\e[34mNEW USER CREATED\e[0m"
-      # puts @user.inspect
       session[:user_id] = @user.id
       redirect to('/')
     else
-      # puts "\e[33mUSER NOT CREATED\e[0m"
-      # puts @user.inspect
       flash.now[:errors] = @user.errors.full_messages
-      # puts "\e[33mTEST POINT\e[0m"
       erb :"users/new"
     end
   end
@@ -98,6 +91,5 @@ class ComeChat < Sinatra::Base
     redirect to('/')
   end
 
-  # start the server if ruby file executed directly
   run! if app_file == $0
 end

@@ -1,6 +1,16 @@
 # ComeChat
 
-We are going to write a little Twitter clone that will allow the users to post messages to a public stream.
+## Introduction
+
+We are going to write a little Twitter clone that will allow the users to post messages to a public stream. This is a fully test covered Sinatra application.
+
+## Try It
+
+```
+rackup
+```
+
+Then point your browser to http://localhost:9292, enjoy the chat!
 
 ## Features
 

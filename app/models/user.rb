@@ -15,8 +15,6 @@ class User
   validates_confirmation_of :password, :message => "Sorry, your passwords don't match"
 
   def password=(password)
-    # puts "\e[34mGENERATING PASSWORD DIGEST\e[0m"
-    # puts "password = " + password
     @password = password
     self.password_digest = BCrypt::Password.create(password)
   end
